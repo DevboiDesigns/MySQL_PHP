@@ -375,7 +375,7 @@ $three = new Three;
 $two->sayHello();
 ```
 
-## Object Iteration 
+## Object Iteration
 
 ```php
 class People {
@@ -384,7 +384,7 @@ class People {
   public $person3 = 'Jeff';
 
 
-  // Iteration from outside of class can not acces these 
+  // Iteration from outside of class can not acces these
   protected $person4 = 'John';
   private $person5 = 'Jen';
 
@@ -404,7 +404,6 @@ foreach($people as $key => $value) {
   print "$key => $value\n"; // person1 => Mike person2 => Shelly person3 => Jeff
 }
 ```
-
 
 # MySQL & PHP
 
@@ -483,3 +482,64 @@ foreach($people as $key => $value) {
 ```
 
 ## DELETE
+
+# Databases & MySQL
+
+- create DB on phpMyAdmin
+- create Table and columns (Table - Object, Column - Properties)
+
+# Connecting
+
+- [Database.php](./classes/Database.php)
+
+```php
+class Database {
+  // Connection & Authentication
+  private $host  = 'localhost';
+  private $user = 'root';
+  private $pass = '';
+  private $dbname = 'testblog';
+
+  // Database handler
+  private $dbh;
+  private $error;
+  // Statment
+  private $stmt;
+
+  // Constructor
+  public function __construct() {
+    // Set DSN - connection string
+    $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+
+    // Set options
+    $options = array(
+      PDO::ATTR_PERSISTENT => true,
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    );
+
+    try {
+      $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+    } catch(PDOException $e) {
+      $this->error = $e->getMessage();
+    }
+  }
+
+}
+```
+
+- [index.php](./index.php)
+
+```php
+
+require 'classes/Database.php';
+
+$database = new Database
+```
+
+## Create
+
+## Read
+
+## Update
+
+## Delete

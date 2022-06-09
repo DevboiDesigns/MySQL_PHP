@@ -3,7 +3,7 @@
 // TAKEN FROM - The Complete Web Developer Course 2.0 - Udemy
 
  // Connect to Database
-  $link = mysqli_connect("host_address", "database_name", "password");
+  //$link = mysqli_connect("host_address", "database_name", "password");
 
   if (mysqli_connect_error()) {
     die ("There was an error connecting to the database");
