@@ -127,6 +127,15 @@ function greet($name, $greetting = 'How are you?')
 greet("John");
 ```
 
+- final
+
+```php
+// can not override 'final' (if extended)
+  final public function sayHello() {
+    echo "Hello World Three";
+  }
+```
+
 # If Statements
 
 - `== != < >`
@@ -323,7 +332,6 @@ if (User::validatePassword($password)) {
 }
 
 
-
 echo User::$minPassLength // acces directly
 ```
 
@@ -335,6 +343,37 @@ echo User::$minPassLength // acces directly
 * can _NOT_ be instantiated and used directly
 * must be extended by another class
 * if a property or method is `abstract` then the class also _must_ be `abstract`
+
+## Including files from other places
+
+- [Files](one.php)
+
+**Basic Approach**
+
+```php
+include 'two.php';
+include 'three.php';
+
+// Instantiate
+$two = new Two;
+$three = new Three;
+
+$two->sayHello();
+```
+
+**Advanced**
+
+```php
+spl_autoload_register(function($class_name) {
+  include $class_name . '.php'; // catonate extension for file name
+});
+
+// Instantiate
+$two = new Two;
+$three = new Three;
+
+$two->sayHello();
+```
 
 # MySQL & PHP
 
