@@ -12,6 +12,7 @@
 
 - open app (starts immediatley)
 - server folder: Applications -> MAMP -> htdocs (files that are read live here, place project here)
+- go to 'My WEBSITE' on admin server site
 
 ## Asociative Array
 
